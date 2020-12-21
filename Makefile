@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for swim
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -o swim -Xmanagers/monitor/notUsed -I../queueinglib -I../../queueinglib -L/home/gmoreno/research/plasa/code/plasasim/libs -L/home/gmoreno/research/plasa/code/queueinglib/out/gcc-debug -lqueueinglib -lboost_serialization -lboost_system -lboost_filesystem -lpthread -KQUEUEINGLIB_PROJ=../../queueinglib -- -lboost_system
+#  opp_makemake -f --deep -o swim -Xmanagers/monitor/notUsed -I../queueinglib -Isrc/model/pladaptMock -I../../queueinglib -L/home/gmoreno/research/plasa/code/plasasim/libs -L/home/gmoreno/research/plasa/code/queueinglib/out/gcc-debug -lqueueinglib -lboost_serialization -lboost_system -lboost_filesystem -lpthread -KQUEUEINGLIB_PROJ=../../queueinglib -- -lboost_system
 #
 
 # Name of target to be created (-o option)
@@ -64,8 +64,8 @@ OBJS = \
     $O/util/Utils.o \
     $O/managers/plan/PLA.o \
     $O/managers/plan/CobRA.o \
-	$O/managers/plan/SDP/SDP.o \
-	$O/managers/plan/SDP/SDPKF.o \
+    $O/managers/plan/SDP/SDP.o \
+    $O/managers/plan/SDP/SDPKF.o \
     $O/managers/execution/BootComplete_m.o
     
 
@@ -178,7 +178,7 @@ cleanall: clean
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES) $(SM_CC_FILES)  ./*.cc managers/*.cc managers/adaptation/*.cc managers/execution/*.cc managers/monitor/*.cc managers/plan/SDP/*.cc managers/plan/*.cc model/*.cc modules/*.cc util/*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES) $(SM_CC_FILES)  ./*.cc managers/*.cc managers/adaptation/*.cc managers/execution/*.cc managers/monitor/*.cc managers/plan/SDP/*.cc managers/plan/*.cc model/*.cc util/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/managers/plan/PLA.o:managers/plan/PLA.cc \
@@ -189,6 +189,7 @@ $O/managers/plan/SDP/SDP.o:managers/plan/SDP/SDP.cc \
 	managers/plan/SDP/SDP.h
 $O/managers/plan/SDP/SDPKF.o:managers/plan/SDP/SDPKF.cc \
 	managers/plan/SDP/SDPKF.h
+
 $O/managers/execution/BootComplete_m.o: managers/execution/BootComplete_m.cc \
 	managers/execution/BootComplete_m.h
 
@@ -216,12 +217,12 @@ $O/managers/execution/ExecutionManagerModBase.o: managers/execution/ExecutionMan
 	model/Configuration.h \
 	model/Environment.h \
 	model/Model.h \
-	model/Observations.h
+	model/Observations.h 
 
 $O/managers/monitor/IProbe.o: managers/monitor/IProbe.cc \
 	managers/monitor/IProbe.h \
 	model/Environment.h \
-	model/Observations.h
+	model/Observations.h 
 $O/managers/monitor/SimProbe.o: managers/monitor/SimProbe.cc \
 	managers/execution/BootComplete_m.h \
 	managers/execution/ExecutionManager.h \
@@ -244,8 +245,9 @@ $O/managers/monitor/SimpleMonitor.o: managers/monitor/SimpleMonitor.cc \
 	model/Environment.h \
 	model/Model.h \
 	model/Observations.h 
+
 $O/model/Configuration.o: model/Configuration.cc \
-	model/Configuration.h 
+	model/Configuration.h \
 $O/model/Environment.o: model/Environment.cc \
 	model/Environment.h 
 $O/model/Model.o: model/Model.cc \
@@ -303,4 +305,5 @@ $O/util/TimeWindowStats.o: util/TimeWindowStats.cc \
 	util/TimeWindowStats.h
 $O/util/Utils.o: util/Utils.cc \
 	util/Utils.h
+
 
